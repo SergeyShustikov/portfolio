@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/text/text_header.dart';
 import 'package:portfolio/ui/palette.dart';
 
 class HoveringText extends StatefulWidget {
   final String text;
   final TextStyle? style;
   final VoidCallback onTap;
+  final bool noHover;
   const HoveringText(
     this.text, {
     super.key,
     required this.onTap,
     this.style,
+    this.noHover = false,
   });
 
   @override
@@ -36,30 +38,23 @@ class _HoveringTextState extends State<HoveringText> {
           children: [
             AnimatedContainer(
               duration: const Duration(milliseconds: 100),
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: _hovering ? Colors.white : Palette.containerColor,
-                    width: 2,
-                  ),
-                ),
-              ),
-              child: Text(
+              decoration: widget.noHover
+                  ? const BoxDecoration()
+                  : BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: _hovering ? Colors.white : Palette.containerColor,
+                          width: 2,
+                        ),
+                      ),
+                    ),
+              child: TextHeader(
                 widget.text,
-                style: widget.style ?? _buildHeaderStyle(),
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-
-  TextStyle _buildHeaderStyle() {
-    return TextStyle(
-      fontSize: 14,
-      fontFamily: GoogleFonts.ubuntu().fontFamily,
-      color: const Color(0xffE8EAED),
     );
   }
 }

@@ -1,10 +1,16 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/about_page.dart';
 import 'package:portfolio/home_page.dart';
 import 'package:portfolio/ui/palette.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MyApp());
+  usePathUrlStrategy();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +19,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    // GoRouter configuration
+    final router = GoRouter(
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (context, state) => const HomePage(),
+        ),
+        GoRoute(
+          path: '/about',
+          builder: (context, state) => const AboutPage(),
+        ),
+      ],
+    );
+
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
@@ -25,7 +45,7 @@ class MyApp extends StatelessWidget {
           onPrimary: Palette.actionColor,
         ),
       ),
-      home: HomePage(),
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
     );
   }
