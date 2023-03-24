@@ -50,6 +50,7 @@ class _HoveringTextState extends State<HoveringText> {
                     ),
               child: TextHeader(
                 widget.text,
+                style: widget.style,
               ),
             ),
           ],

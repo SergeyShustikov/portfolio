@@ -3,17 +3,18 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TextHeader extends StatelessWidget {
   final String text;
-
+  final TextStyle? style;
   const TextHeader(
     this.text, {
     super.key,
+    this.style,
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: _headerStyle,
+      style: style ?? _headerStyle,
     );
   }
 

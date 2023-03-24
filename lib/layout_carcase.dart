@@ -4,8 +4,25 @@ import 'package:portfolio/content_container.dart';
 import 'package:portfolio/footer.dart';
 
 const kMinMobileLayoutWidth = 600;
-const kMinTabletLayoutWidth = 1200;
-const kMinDesktopLayoutWidth = 1600;
+const kMinTabletLayoutWidth = 1000;
+const kMinDesktopLayoutWidth = 1400;
+
+mixin LayoutTypeDeterminatorMixin on StatelessWidget {
+  bool isDesktop(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    return screenWidth > kMinDesktopLayoutWidth;
+  }
+
+  bool isTablet(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    return screenWidth > kMinMobileLayoutWidth && screenWidth < kMinDesktopLayoutWidth;
+  }
+
+  bool isMobile(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    return screenWidth < kMinTabletLayoutWidth;
+  }
+}
 
 class ResponsiveWidget extends StatelessWidget {
   final Widget desktopView;
@@ -23,7 +40,14 @@ class ResponsiveWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget body = _getWidgetByScreenWidth(context);
     return Scaffold(
-      appBar: const PreferredSize(preferredSize: Size.fromHeight(72), child: Center(child: SiteAppBar())),
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(72),
+          child: Center(
+              child: Column(
+            children: const [
+              SiteAppBar(),
+            ],
+          ))),
       body: SizedBox.expand(child: body),
     );
   }
@@ -63,6 +87,21 @@ class WebsiteCarcase extends StatelessWidget {
                 const SizedBox(height: 24),
               ],
             ),
+          ),
+        ),
+      ),
+      tabletView: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              const SizedBox(height: 8),
+              Flexible(child: ContentContainer(child: body)),
+              // const Spacer(),
+              const SiteFooter(),
+              const SizedBox(height: 24),
+            ],
           ),
         ),
       ),
