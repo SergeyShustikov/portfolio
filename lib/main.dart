@@ -5,7 +5,9 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/about_page.dart';
+import 'package:portfolio/example.dart';
 import 'package:portfolio/home_page.dart';
+import 'package:portfolio/projects_page.dart';
 import 'package:portfolio/ui/palette.dart';
 
 void main() {
@@ -29,6 +31,14 @@ class MyApp extends StatelessWidget {
         GoRoute(
           path: '/about',
           builder: (context, state) => const AboutPage(),
+        ),
+        GoRoute(
+          path: '/test',
+          builder: (context, state) => const ExampleUsage(),
+        ),
+        GoRoute(
+          path: '/projects',
+          builder: (context, state) => const ProjectsPage(),
         ),
       ],
     );

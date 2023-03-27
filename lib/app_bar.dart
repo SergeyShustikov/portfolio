@@ -16,7 +16,6 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
         Container(
           color: Palette.containerColor,
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          margin: EdgeInsets.symmetric(horizontal: isDesktop(context) ? MediaQuery.of(context).size.width / 5 : 0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -46,6 +45,7 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
                       'Blog',
                       onTap: () {
                         debugPrint('On blog tap');
+                        context.go('/test');
                       },
                     ),
                   ),
@@ -53,7 +53,7 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
                   HoveringText(
                     'Projects',
                     onTap: () {
-                      debugPrint('On Projects tap');
+                      context.go('/projects');
                     },
                   ),
                   const SizedBox(width: 24),
@@ -70,7 +70,6 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
         ),
         Container(
           height: 1,
-          margin: EdgeInsets.symmetric(horizontal: isDesktop(context) ? MediaQuery.of(context).size.width / 5 : 0),
           color: Colors.white,
         ),
       ],

@@ -12,12 +12,24 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/apple_button.png
+  AssetGenImage get appleButton =>
+      const AssetGenImage('assets/images/apple_button.png');
+
+  /// File path: assets/images/apple_google_button.png
+  AssetGenImage get appleGoogleButton =>
+      const AssetGenImage('assets/images/apple_google_button.png');
+
   /// File path: assets/images/avatar.jpg
   AssetGenImage get avatar => const AssetGenImage('assets/images/avatar.jpg');
 
   /// File path: assets/images/avatar_small.jpg
   AssetGenImage get avatarSmall =>
       const AssetGenImage('assets/images/avatar_small.jpg');
+
+  /// File path: assets/images/google_button.png
+  AssetGenImage get googleButton =>
+      const AssetGenImage('assets/images/google_button.png');
 
   /// File path: assets/images/header_photo.JPG
   AssetGenImage get headerPhoto =>
@@ -28,8 +40,15 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/photo_main.JPG');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [avatar, avatarSmall, headerPhoto, photoMain];
+  List<AssetGenImage> get values => [
+        appleButton,
+        appleGoogleButton,
+        avatar,
+        avatarSmall,
+        googleButton,
+        headerPhoto,
+        photoMain
+      ];
 }
 
 class Assets {
