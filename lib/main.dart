@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/pages/about/about_page.dart';
 import 'package:portfolio/pages/home/home_page.dart';
+import 'package:portfolio/pages/not_found/page_not_found.dart';
 import 'package:portfolio/pages/projects/projects_page.dart';
 import 'package:portfolio/theming/palette.dart';
 
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // GoRouter configuration
     final router = GoRouter(
+      errorBuilder: (context, state) {
+        return const PageNotFound();
+      },
       routes: [
         GoRoute(
           path: '/',

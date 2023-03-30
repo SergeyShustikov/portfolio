@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/pages/about/about_page_desktop.dart';
 import 'package:portfolio/pages/about/about_page_mobile.dart';
 import 'package:portfolio/pages/about/about_page_tablet.dart';
+import 'package:portfolio/theming/palette.dart';
+import 'package:portfolio/utils/technologies.dart';
 import 'package:portfolio/widgets/responsive_widget.dart';
 
 class AboutPage extends StatefulWidget {
@@ -115,20 +117,14 @@ class EmploymentHistoryItem extends StatelessWidget {
             runSpacing: 8,
             spacing: 8,
             children: [
-              SizedBox(
-                width: 48,
-                height: 32,
-                child: Center(
-                  child: Text(
-                    'Tools :',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: GoogleFonts.ubuntu().fontFamily,
-                    ),
-                  ),
-                ),
-              ),
-              ...tools.map((e) => TechnologyChip(e)).toList(),
+              const TechnologyChip('Tools :', noDecoration: true),
+              ...tools.map((title) {
+                var technology = Technology.findTechnologyByString(title);
+                if (technology != null) {
+                  return IconTechnologyChip(technology);
+                }
+                return TechnologyChip(title);
+              }).toList(),
             ],
           ),
           const SizedBox(height: 8),
@@ -140,13 +136,77 @@ class EmploymentHistoryItem extends StatelessWidget {
 
 class TechnologyChip extends StatelessWidget {
   final String text;
-  const TechnologyChip(this.text, {super.key});
+  final bool noDecoration;
+  const TechnologyChip(this.text, {super.key, this.noDecoration = false});
+
+  @override
+  Widget build(BuildContext context) {
+    if (noDecoration) {
+      return _NoDecorationChip(text: text);
+    } else {
+      return _DecoratedChip(text: text);
+    }
+  }
+}
+
+class _DecoratedChip extends StatelessWidget {
+  const _DecoratedChip({
+    required this.text,
+  });
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return Chip(
       label: Text(
         text,
+        style: TextStyle(
+          fontSize: 14,
+          fontFamily: GoogleFonts.ubuntu().fontFamily,
+        ),
+      ),
+    );
+  }
+}
+
+class _NoDecorationChip extends StatelessWidget {
+  const _NoDecorationChip({
+    required this.text,
+  });
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      backgroundColor: Palette.containerColor,
+      surfaceTintColor: Colors.transparent,
+      shadowColor: Colors.transparent,
+      side: BorderSide.none,
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      label: Text(
+        text,
+        style: TextStyle(
+          fontSize: 14,
+          fontFamily: GoogleFonts.ubuntu().fontFamily,
+        ),
+      ),
+    );
+  }
+}
+
+class IconTechnologyChip extends StatelessWidget {
+  const IconTechnologyChip(this.technology, {super.key});
+
+  final Technology technology;
+  final double iconSize = 18;
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      avatar: technology.icon?.image(width: iconSize, height: iconSize),
+      label: Text(
+        technology.title,
         style: TextStyle(
           fontSize: 14,
           fontFamily: GoogleFonts.ubuntu().fontFamily,

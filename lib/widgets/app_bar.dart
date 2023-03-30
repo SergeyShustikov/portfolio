@@ -64,7 +64,7 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
                   ),
                   const SizedBox(width: 24),
                   HoveringText(
-                    'About',
+                    'About me',
                     onTap: () {
                       context.go('/about');
                     },

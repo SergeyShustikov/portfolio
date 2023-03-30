@@ -51,10 +51,70 @@ class $AssetsImagesGen {
       ];
 }
 
+class $AssetsTechnologyIconsGen {
+  const $AssetsTechnologyIconsGen();
+
+  /// File path: assets/technology_icons/ic_amplitude.png
+  AssetGenImage get icAmplitude =>
+      const AssetGenImage('assets/technology_icons/ic_amplitude.png');
+
+  /// File path: assets/technology_icons/ic_android.png
+  AssetGenImage get icAndroid =>
+      const AssetGenImage('assets/technology_icons/ic_android.png');
+
+  /// File path: assets/technology_icons/ic_dart.png
+  AssetGenImage get icDart =>
+      const AssetGenImage('assets/technology_icons/ic_dart.png');
+
+  /// File path: assets/technology_icons/ic_flutter.png
+  AssetGenImage get icFlutter =>
+      const AssetGenImage('assets/technology_icons/ic_flutter.png');
+
+  /// File path: assets/technology_icons/ic_flutter_gen.jpeg
+  AssetGenImage get icFlutterGen =>
+      const AssetGenImage('assets/technology_icons/ic_flutter_gen.jpeg');
+
+  /// File path: assets/technology_icons/ic_getx.png
+  AssetGenImage get icGetx =>
+      const AssetGenImage('assets/technology_icons/ic_getx.png');
+
+  /// File path: assets/technology_icons/ic_github.png
+  AssetGenImage get icGithub =>
+      const AssetGenImage('assets/technology_icons/ic_github.png');
+
+  /// File path: assets/technology_icons/ic_java.png
+  AssetGenImage get icJava =>
+      const AssetGenImage('assets/technology_icons/ic_java.png');
+
+  /// File path: assets/technology_icons/ic_kotlin.png
+  AssetGenImage get icKotlin =>
+      const AssetGenImage('assets/technology_icons/ic_kotlin.png');
+
+  /// File path: assets/technology_icons/ic_sentry.png
+  AssetGenImage get icSentry =>
+      const AssetGenImage('assets/technology_icons/ic_sentry.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        icAmplitude,
+        icAndroid,
+        icDart,
+        icFlutter,
+        icFlutterGen,
+        icGetx,
+        icGithub,
+        icJava,
+        icKotlin,
+        icSentry
+      ];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsTechnologyIconsGen technologyIcons =
+      $AssetsTechnologyIconsGen();
 }
 
 class AssetGenImage {
