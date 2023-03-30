@@ -9,10 +9,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ResponsiveWidget(
-      desktopView: HomePageDesktop(),
-      tabletView: HomePageTablet(),
-      mobileView: HomePageMobile(),
+    return Title(
+      color: Colors.blue,
+      title: 'Sergey Shustikov | Portfolio',
+      child: const ResponsiveWidget(
+        desktopView: HomePageDesktop(),
+        tabletView: HomePageTablet(),
+        mobileView: HomePageMobile(),
+      ),
     );
   }
 }

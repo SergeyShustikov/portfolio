@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 
-const kMinMobileLayoutWidth = 600;
-const kMinTabletLayoutWidth = 900;
-const kMinDesktopLayoutWidth = 1100;
-
+const kMinMobileLayoutWidth = 580;
+const kMinTabletLayoutWidth = 860;
+const kMinDesktopLayoutWidth = 1200;
 mixin LayoutTypeDeterminatorMixin on StatelessWidget {
   bool isDesktop(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    return screenWidth > kMinDesktopLayoutWidth;
+    return screenWidth >= kMinDesktopLayoutWidth;
   }
 
   bool isTablet(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    return screenWidth > kMinMobileLayoutWidth && screenWidth < kMinDesktopLayoutWidth;
+    return screenWidth > kMinTabletLayoutWidth && screenWidth < kMinDesktopLayoutWidth;
   }
 
   bool isMobile(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    return screenWidth < kMinTabletLayoutWidth;
+    return screenWidth <= kMinTabletLayoutWidth;
   }
 }
 

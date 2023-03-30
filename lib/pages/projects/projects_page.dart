@@ -48,10 +48,14 @@ class ProjectsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveWidget(
-      desktopView: ProjectsPageDesktop(projects),
-      tabletView: ProjectsPageTablet(projects),
-      mobileView: ProjectsPageMobile(projects),
+    return Title(
+      color: Colors.blue,
+      title: 'Sergey Shustikov | Projects',
+      child: ResponsiveWidget(
+        desktopView: ProjectsPageDesktop(projects),
+        tabletView: ProjectsPageTablet(projects),
+        mobileView: ProjectsPageMobile(projects),
+      ),
     );
   }
 }

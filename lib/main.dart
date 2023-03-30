@@ -43,7 +43,6 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: GoogleFonts.rubik().fontFamily,

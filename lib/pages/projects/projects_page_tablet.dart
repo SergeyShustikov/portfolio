@@ -18,6 +18,7 @@ class ProjectsPageTablet extends StatelessWidget {
       headerSettings: HeaderSettings(
         headerHeight: kToolbarHeight + 18,
       ),
+      bodyKey: const PageStorageKey(300),
       body: Container(
         decoration: BoxDecoration(
           color: Palette.containerColor,

@@ -6,23 +6,48 @@ import 'package:portfolio/pages/about/about_page_mobile.dart';
 import 'package:portfolio/pages/about/about_page_tablet.dart';
 import 'package:portfolio/theming/palette.dart';
 import 'package:portfolio/utils/technologies.dart';
+import 'package:portfolio/widgets/app_bar.dart';
+import 'package:portfolio/widgets/mobile_drawer.dart';
 import 'package:portfolio/widgets/responsive_widget.dart';
+import 'package:web_scaffold/web_scaffold.dart';
 
-class AboutPage extends StatefulWidget {
+class AboutPage extends StatelessWidget with LayoutTypeDeterminatorMixin {
   const AboutPage({super.key});
 
   @override
-  State<AboutPage> createState() => _AboutPageState();
-}
-
-class _AboutPageState extends State<AboutPage> {
-  @override
   Widget build(BuildContext context) {
-    return const ResponsiveWidget(
-      desktopView: AboutPageDesktop(),
-      tabletView: AboutPageTablet(),
-      mobileView: AboutPageMobile(),
+    return Title(
+      color: Colors.blue,
+      title: 'Sergey Shustikov | About me',
+      child: WebScaffold(
+        bodyKey: const PageStorageKey(300),
+        bodyConfiguration: _getBodyConfiguration(context),
+        drawer: isMobile(context) ? const MobileDrawer() : null,
+        header: const SiteAppBar(),
+        headerSettings: HeaderSettings(
+          headerHeight: kToolbarHeight + 18,
+        ),
+        body: const ResponsiveWidget(
+          desktopView: AboutPageDesktop(),
+          tabletView: AboutPageTablet(),
+          mobileView: AboutPageMobile(),
+        ),
+      ),
     );
+  }
+
+  BodyConfiguration _getBodyConfiguration(BuildContext context) {
+    if (isDesktop(context)) {
+      return const BodyConfiguration([
+        FlexPart(),
+        BodyPart(flex: 4),
+        FlexPart(),
+      ]);
+    } else {
+      return const BodyConfiguration([
+        BodyPart(),
+      ]);
+    }
   }
 }
 
