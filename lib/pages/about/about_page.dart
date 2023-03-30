@@ -1,11 +1,11 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/text/text_paragraph.dart';
-import 'package:portfolio/ui/palette.dart';
+import 'package:portfolio/theming/palette.dart';
+import 'package:portfolio/widgets/text/text_paragraph.dart';
 import 'package:web_scaffold/web_scaffold.dart';
 
-import 'app_bar.dart';
+import '../../widgets/app_bar.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -18,7 +18,11 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return WebScaffold(
-      bodyConfiguration: const BodyConfiguration([FlexPart(1), BodyPart(4), FlexPart(1)]),
+      bodyConfiguration: const BodyConfiguration([
+        FlexPart(),
+        BodyPart(flex: 4),
+        FlexPart(),
+      ]),
       header: const SiteAppBar(),
       headerSettings: HeaderSettings(
         headerHeight: kToolbarHeight + 18,

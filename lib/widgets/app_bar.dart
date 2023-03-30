@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/hovering_text.dart';
-import 'package:portfolio/hovering_widget.dart';
-import 'package:portfolio/layout_carcase.dart';
-import 'package:portfolio/ui/palette.dart';
+import 'package:portfolio/utils/feature_flag.dart';
+import 'package:portfolio/widgets/content_container.dart';
+import 'package:portfolio/widgets/hovering_text.dart';
+import 'package:portfolio/widgets/hovering_widget.dart';
+import 'package:portfolio/widgets/responsive_widget.dart';
 
 class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
   const SiteAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return ResponsiveWidget(
+      desktopView: _buildDesktopAppBar(context),
+      mobileView: _buildMobileAppBar(context),
+    );
+  }
+
+  Widget _buildDesktopAppBar(BuildContext context) {
     return Column(
       children: [
-        Container(
-          color: Palette.containerColor,
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+        ContentContainer(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 22),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -39,13 +46,12 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
                     ),
                   ),
                   const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 24.0),
+                  Visibility(
+                    visible: FeatureFlag.kBlogEnabled,
                     child: HoveringText(
                       'Blog',
                       onTap: () {
                         debugPrint('On blog tap');
-                        context.go('/test');
                       },
                     ),
                   ),
@@ -66,6 +72,39 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
                 ],
               ),
             ],
+          ),
+        ),
+        Container(
+          height: 1,
+          color: Colors.white,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMobileAppBar(BuildContext context) {
+    return Column(
+      children: [
+        ContentContainer(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 22),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: HoveringWidget(
+              child: GestureDetector(
+                child: Text(
+                  'Sergey Shustikov',
+                  style: TextStyle(
+                    fontFamily: GoogleFonts.ubuntu().fontFamily,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                onTap: () {
+                  context.go('/');
+                },
+              ),
+            ),
           ),
         ),
         Container(

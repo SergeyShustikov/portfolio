@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/ui/palette.dart';
+import 'package:portfolio/theming/palette.dart';
 
 class SiteFooter extends StatelessWidget {
   const SiteFooter({super.key});

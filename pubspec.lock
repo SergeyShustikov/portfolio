@@ -736,10 +736,9 @@ packages:
   web_scaffold:
     dependency: "direct main"
     description:
-      name: web_scaffold
-      sha256: cb1d2083daf1ef61d010df960710fab86b9b0d08c835e6cf4718a21ea8e8b0c9
-      url: "https://pub.dev"
-    source: hosted
+      path: web_scaffold
+      relative: true
+    source: path
     version: "0.0.3"
   web_socket_channel:
     dependency: transitive
