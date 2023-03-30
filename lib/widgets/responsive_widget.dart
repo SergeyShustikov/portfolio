@@ -21,7 +21,7 @@ mixin LayoutTypeDeterminatorMixin on StatelessWidget {
   }
 }
 
-class ResponsiveWidget extends StatelessWidget {
+class ResponsiveWidget extends StatelessWidget with LayoutTypeDeterminatorMixin {
   final Widget desktopView;
   final Widget? tabletView;
   final Widget? mobileView;
@@ -42,9 +42,9 @@ class ResponsiveWidget extends StatelessWidget {
   Widget _getWidgetByScreenWidth(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     debugPrint('Screen width has been changed = $screenWidth');
-    if (screenWidth > kMinDesktopLayoutWidth) {
+    if (isDesktop(context)) {
       return desktopView;
-    } else if (screenWidth > kMinMobileLayoutWidth && screenWidth < kMinDesktopLayoutWidth) {
+    } else if (isTablet(context)) {
       return tabletView ?? desktopView;
     } else {
       return mobileView ?? tabletView ?? desktopView;
