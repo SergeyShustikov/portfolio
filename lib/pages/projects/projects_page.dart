@@ -2,29 +2,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:portfolio/gen/assets.gen.dart';
-import 'package:portfolio/theming/palette.dart';
-import 'package:portfolio/widgets/app_bar.dart';
+import 'package:portfolio/pages/projects/projects_page_desktop.dart';
+import 'package:portfolio/pages/projects/projects_page_mobile.dart';
+import 'package:portfolio/pages/projects/projects_page_tablet.dart';
 import 'package:portfolio/widgets/hovering_widget.dart';
+import 'package:portfolio/widgets/responsive_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:web_scaffold/web_scaffold.dart';
 
-class ProjectsPage extends StatefulWidget {
-  const ProjectsPage({super.key});
-
-  @override
-  State<ProjectsPage> createState() => _ProjectsPageState();
-}
-
-class _ProjectsPageState extends State<ProjectsPage> {
-  final List<Project> projects = [
-    const Project(
+class ProjectsPage extends StatelessWidget {
+  final List<Project> projects = const [
+    Project(
       name: 'Samsung books',
       description:
           'The reworked version of Readershub application for Samsung users. Currently unavailable on market. ',
       image: 'https://lh6.ggpht.com/ahCkY6hyruM1gs5j2jgxCrqfy03BRpgb8iXA1ysk34oKQNAMjYlEiU07Dr2Cvcq3Jxw=s75-rw',
       googlePlayLink: 'https://samsung-books.en.uptodown.com/android',
     ),
-    const Project(
+    Project(
       name: 'Mantu',
       description:
           ' This peer-to-peer instant messaging application ensures security and convenience, whether you’re chatting with just one friend or a large group.',
@@ -32,7 +26,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
           'https://play-lh.googleusercontent.com/KNx55BouPkgKZil7d-RcnWiqpHYwZ0x8Sccrx_qoULFuYOzZM9rBrsiZ2rzUV6QlpBM=w480-h960-rw',
       googlePlayLink: 'https://play.google.com/store/apps/details?id=im.mantu.ionic&hl=uk&gl=US',
     ),
-    const Project(
+    Project(
       name: 'WSI Energy Trader',
       description:
           'The premier weather decision-support platform for the global commodity markets. Providing support for North American, European, Asian & Australian traders, a comprehensive global outlook is delivered in a single, easy-to-use platform.',
@@ -40,7 +34,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
           'https://play-lh.googleusercontent.com/u7K9MwE5K4AgmqjLItfpnGxbR1EhI5mztkntuYo7QTs0E6U-9IwD3X8GP0y6cgsoDZg=w480-h960-rw',
       googlePlayLink: 'https://play.google.com/store/apps/details?id=com.wsi.trader&hl=us&gl=US',
     ),
-    const Project(
+    Project(
       name: 'Crossplatform, crossbranded application.',
       description: 'This is the fourth project',
       image:
@@ -50,24 +44,14 @@ class _ProjectsPageState extends State<ProjectsPage> {
     ),
   ];
 
+  const ProjectsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return WebScaffold(
-      bodyConfiguration: const BodyConfiguration([FlexPart(), BodyPart(flex: 4), FlexPart()]),
-      header: const SiteAppBar(),
-      headerSettings: HeaderSettings(
-        headerHeight: kToolbarHeight + 18,
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Palette.containerColor,
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(12),
-            bottomRight: Radius.circular(12),
-          ),
-        ),
-        child: ProjectsGridView(maxItemWidth: 1000, projects: projects),
-      ),
+    return ResponsiveWidget(
+      desktopView: ProjectsPageDesktop(projects),
+      tabletView: ProjectsPageTablet(projects),
+      mobileView: ProjectsPageMobile(projects),
     );
   }
 }
@@ -104,11 +88,11 @@ class ProjectsGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: projects.length,
       shrinkWrap: true,
       itemBuilder: (context, index) {
         final project = projects[index];
-
         return Card(
           child: Container(
             padding: const EdgeInsets.all(16),
