@@ -11,7 +11,13 @@ class AboutPageDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Palette.containerColor,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(12),
+          bottomRight: Radius.circular(12),
+        ),
+        color: Palette.containerColor,
+      ),
       padding: const EdgeInsets.all(16),
       child: Column(
         children: const [

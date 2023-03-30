@@ -7,6 +7,7 @@ import 'package:portfolio/pages/about/about_page_tablet.dart';
 import 'package:portfolio/theming/palette.dart';
 import 'package:portfolio/utils/technologies.dart';
 import 'package:portfolio/widgets/app_bar.dart';
+import 'package:portfolio/widgets/footer.dart';
 import 'package:portfolio/widgets/mobile_drawer.dart';
 import 'package:portfolio/widgets/responsive_widget.dart';
 import 'package:web_scaffold/web_scaffold.dart';
@@ -32,6 +33,7 @@ class AboutPage extends StatelessWidget with LayoutTypeDeterminatorMixin {
           tabletView: AboutPageTablet(),
           mobileView: AboutPageMobile(),
         ),
+        footer: const SiteFooter(),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/pages/projects/projects_page.dart';
 import 'package:portfolio/theming/palette.dart';
 import 'package:portfolio/widgets/app_bar.dart';
+import 'package:portfolio/widgets/footer.dart';
 import 'package:web_scaffold/web_scaffold.dart';
 
 class ProjectsPageDesktop extends StatelessWidget {
@@ -21,6 +22,7 @@ class ProjectsPageDesktop extends StatelessWidget {
         headerHeight: kToolbarHeight + 18,
       ),
       bodyKey: const PageStorageKey(300),
+      footer: const SiteFooter(),
       body: Container(
         decoration: BoxDecoration(
           color: Palette.containerColor,
