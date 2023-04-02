@@ -1,1 +1,4 @@
-const kProjectsPage = 1000;
+part of 'utils.dart';
+
+const kProjectsPageKey = PageStorageKey(1000);
+const kHomePageKey = PageStorageKey(2000);

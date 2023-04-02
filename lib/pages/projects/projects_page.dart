@@ -2,12 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:portfolio/gen/assets.gen.dart';
+import 'package:portfolio/pages/projects/data/project.dart';
 import 'package:portfolio/pages/projects/projects_page_desktop.dart';
 import 'package:portfolio/pages/projects/projects_page_mobile.dart';
 import 'package:portfolio/pages/projects/projects_page_tablet.dart';
-import 'package:portfolio/widgets/hovering_widget.dart';
-import 'package:portfolio/widgets/responsive_widget.dart';
+import 'package:portfolio/utils/ui_utils.dart';
+import 'package:portfolio/utils/utils.dart';
+import 'package:portfolio/widgets/ui_library.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:web_scaffold/web_scaffold.dart';
 
 class ProjectsPage extends StatelessWidget {
   final List<Project> projects = const [
@@ -40,7 +43,8 @@ class ProjectsPage extends StatelessWidget {
       image:
           'https://play-lh.googleusercontent.com/inUl18jZDJiwaTicfaPMaS_-Po__iMIpbfFsy0DmgIWMvmijfosd4isV75qFN8-uMpo=w480-h960-rw',
       googlePlayLink: 'https://play.google.com/store/apps/details?id=com.x100group.sushimaster&hl=us&gl=US',
-      appStoreLink: 'https://play.google.com/store/apps/details?id=com.x100group.sushimaster&hl=us&gl=US',
+      appStoreLink:
+          'https://apps.apple.com/ua/app/sushi-master-%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B0-%D0%B5%D0%B4%D1%8B/id1575261309?l=en',
     ),
   ];
 
@@ -51,32 +55,21 @@ class ProjectsPage extends StatelessWidget {
     return Title(
       color: Colors.blue,
       title: 'Sergey Shustikov | Projects',
-      child: ResponsiveWidget(
-        desktopView: ProjectsPageDesktop(projects),
-        tabletView: ProjectsPageTablet(projects),
-        mobileView: ProjectsPageMobile(projects),
+      child: WebScaffold(
+        bodyKey: kProjectsPageKey,
+        bodyConfiguration: getBodyConfiguration(context),
+        drawer: context.isMobile() ? const MobileDrawer() : null,
+        header: const SiteAppBar(),
+        headerSettings: HeaderSettings(headerHeight: kHeaderHeight),
+        body: ResponsiveWidget(
+          desktopView: ProjectsPageDesktop(projects),
+          tabletView: ProjectsPageTablet(projects),
+          mobileView: ProjectsPageMobile(projects),
+        ),
+        footer: const SiteFooter(),
       ),
     );
   }
-}
-
-class Project {
-  final String name;
-  final String description;
-  final String? image;
-  final String? googlePlayLink;
-  final String? appStoreLink;
-
-  const Project({
-    required this.name,
-    required this.description,
-    this.image,
-    this.googlePlayLink,
-    this.appStoreLink,
-  });
-
-  Uri getGooglePlayUri() => Uri.parse(googlePlayLink!);
-  Uri getAppStoreUri() => Uri.parse(appStoreLink!);
 }
 
 class ProjectsGridView extends StatelessWidget {

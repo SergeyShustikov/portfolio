@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of ui_library;
 
 class HoveringWidget extends StatefulWidget {
   final Widget child;

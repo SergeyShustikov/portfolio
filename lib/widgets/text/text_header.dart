@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+part of ui_library;
 
 class TextHeader extends StatelessWidget {
   final String text;

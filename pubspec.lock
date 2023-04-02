@@ -739,7 +739,7 @@ packages:
       path: web_scaffold
       relative: true
     source: path
-    version: "0.0.4"
+    version: "0.0.5"
   web_socket_channel:
     dependency: transitive
     description:

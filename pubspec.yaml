@@ -18,9 +18,9 @@ dependencies:
   go_router: ^6.5.0
   url_launcher: ^6.1.10
   eva_icons_flutter: ^3.1.0
-  web_scaffold: ^0.0.5
-  # web_scaffold:
-  #   path: ./web_scaffold
+  # web_scaffold: ^0.0.5
+  web_scaffold:
+    path: ./web_scaffold
   image_network: ^2.5.1
 dev_dependencies:
   flutter_test:

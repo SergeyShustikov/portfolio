@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/utils/feature_flag.dart';
-import 'package:portfolio/widgets/content_container.dart';
-import 'package:portfolio/widgets/hovering_text.dart';
-import 'package:portfolio/widgets/hovering_widget.dart';
-import 'package:portfolio/widgets/responsive_widget.dart';
+part of ui_library;
 
 class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
   const SiteAppBar({super.key});

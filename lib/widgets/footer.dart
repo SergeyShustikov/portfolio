@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/theming/palette.dart';
+part of ui_library;
 
 class SiteFooter extends StatelessWidget {
   const SiteFooter({super.key});

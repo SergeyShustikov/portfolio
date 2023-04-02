@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/theming/palette.dart';
-import 'package:portfolio/widgets/content_container.dart';
+part of ui_library;
 
 class MobileDrawer extends StatelessWidget {
   const MobileDrawer({super.key});

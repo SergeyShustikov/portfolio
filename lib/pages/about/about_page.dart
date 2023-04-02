@@ -1,15 +1,13 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/data/technologies.dart';
 import 'package:portfolio/pages/about/about_page_desktop.dart';
 import 'package:portfolio/pages/about/about_page_mobile.dart';
 import 'package:portfolio/pages/about/about_page_tablet.dart';
 import 'package:portfolio/theming/palette.dart';
-import 'package:portfolio/utils/technologies.dart';
-import 'package:portfolio/widgets/app_bar.dart';
-import 'package:portfolio/widgets/footer.dart';
-import 'package:portfolio/widgets/mobile_drawer.dart';
-import 'package:portfolio/widgets/responsive_widget.dart';
+import 'package:portfolio/utils/ui_utils.dart';
+import 'package:portfolio/widgets/ui_library.dart';
 import 'package:web_scaffold/web_scaffold.dart';
 
 class AboutPage extends StatelessWidget with LayoutTypeDeterminatorMixin {
@@ -22,8 +20,8 @@ class AboutPage extends StatelessWidget with LayoutTypeDeterminatorMixin {
       title: 'Sergey Shustikov | About me',
       child: WebScaffold(
         bodyKey: const PageStorageKey(300),
-        bodyConfiguration: _getBodyConfiguration(context),
-        drawer: isMobile(context) ? const MobileDrawer() : null,
+        bodyConfiguration: getBodyConfiguration(context),
+        drawer: context.isMobile() ? const MobileDrawer() : null,
         header: const SiteAppBar(),
         headerSettings: HeaderSettings(
           headerHeight: kToolbarHeight + 18,
@@ -36,20 +34,6 @@ class AboutPage extends StatelessWidget with LayoutTypeDeterminatorMixin {
         footer: const SiteFooter(),
       ),
     );
-  }
-
-  BodyConfiguration _getBodyConfiguration(BuildContext context) {
-    if (isDesktop(context)) {
-      return const BodyConfiguration([
-        FlexPart(),
-        BodyPart(flex: 4),
-        FlexPart(),
-      ]);
-    } else {
-      return const BodyConfiguration([
-        BodyPart(),
-      ]);
-    }
   }
 }
 

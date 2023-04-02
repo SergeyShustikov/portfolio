@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:portfolio/widgets/text/text_header.dart';
-import 'package:portfolio/theming/palette.dart';
+part of ui_library;
 
 class HoveringText extends StatefulWidget {
   final String text;

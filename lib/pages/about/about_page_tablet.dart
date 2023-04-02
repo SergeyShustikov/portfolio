@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/about/about_page.dart';
 import 'package:portfolio/theming/palette.dart';
-import 'package:portfolio/widgets/text/text_paragraph.dart';
+import 'package:portfolio/widgets/ui_library.dart';
 
 class AboutPageTablet extends StatelessWidget {
   const AboutPageTablet({
