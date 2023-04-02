@@ -22,6 +22,8 @@ class HomePage extends StatelessWidget {
         header: const SiteAppBar(),
         headerSettings: HeaderSettings(headerHeight: kHeaderHeight),
         footer: const SiteFooter(),
+        footerSettings: FooterSettings(footerHeight: 72),
+        expandBody: true,
         body: const ResponsiveWidget(
           desktopView: HomePageDesktop(),
           tabletView: HomePageTablet(),

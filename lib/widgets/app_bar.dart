@@ -13,6 +13,7 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
 
   Widget _buildDesktopAppBar(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         ContentContainer(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 22),
