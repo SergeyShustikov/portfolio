@@ -5,12 +5,14 @@ class HoveringText extends StatefulWidget {
   final TextStyle? style;
   final VoidCallback onTap;
   final bool noHover;
+  final bool underline;
   const HoveringText(
     this.text, {
     super.key,
     required this.onTap,
     this.style,
     this.noHover = false,
+    this.underline = true,
   });
 
   @override
@@ -36,7 +38,7 @@ class _HoveringTextState extends State<HoveringText> {
           children: [
             AnimatedContainer(
               duration: const Duration(milliseconds: 100),
-              decoration: widget.noHover
+              decoration: widget.noHover || !widget.underline
                   ? const BoxDecoration()
                   : BoxDecoration(
                       border: Border(

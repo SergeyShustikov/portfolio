@@ -238,6 +238,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_emoji:
+    dependency: "direct main"
+    description:
+      name: flutter_emoji
+      sha256: a4341f2440b7f97c2ec4bb19a0903f313918a755c55d30ac746f1312085788dd
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
   flutter_gen_core:
     dependency: transitive
     description:
@@ -737,10 +745,10 @@ packages:
     dependency: "direct main"
     description:
       name: web_scaffold
-      sha256: "3ca1e454b3c51bbcfbb6d0427bdfa3c1f0a217d4918278e315587ad61d3c6634"
+      sha256: "2bd3db6bd7fa634f914c5a3d523591e511245b41bc5bb9caaaa7dcbe3bb5bfb4"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.7"
+    version: "0.0.8"
   web_socket_channel:
     dependency: transitive
     description:

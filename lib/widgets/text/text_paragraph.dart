@@ -25,11 +25,7 @@ class TextParagraph extends StatelessWidget {
         textSpans.add(
           TextSpan(
             text: firstChar,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              fontFamily: GoogleFonts.ubuntu().fontFamily,
-            ),
+            style: kHeaderTextStyleBold,
           ),
         );
 
@@ -43,9 +39,7 @@ class TextParagraph extends StatelessWidget {
               textSpans.add(
                 TextSpan(
                   text: restOfParagraph.substring(matchEndIndex, match.start),
-                  style: TextStyle(
-                    fontFamily: GoogleFonts.ubuntu().fontFamily,
-                  ),
+                  style: kNormalTextStyle,
                 ),
               );
             }
@@ -54,10 +48,7 @@ class TextParagraph extends StatelessWidget {
             textSpans.add(
               TextSpan(
                 text: link,
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontFamily: GoogleFonts.ubuntu().fontFamily,
-                ),
+                style: kNormalTextStyle.copyWith(color: Colors.blue),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
                     if (await canLaunchUrl(uri)) {
@@ -80,9 +71,7 @@ class TextParagraph extends StatelessWidget {
             textSpans.add(
               TextSpan(
                 text: restOfParagraph.substring(matchEndIndex),
-                style: TextStyle(
-                  fontFamily: GoogleFonts.ubuntu().fontFamily,
-                ),
+                style: kNormalTextStyle,
               ),
             );
           }
@@ -90,7 +79,7 @@ class TextParagraph extends StatelessWidget {
       }
 
       if (i < paragraphs.length - 1) {
-        textSpans.add(TextSpan(text: "\n", style: TextStyle(fontFamily: GoogleFonts.ubuntu().fontFamily)));
+        textSpans.add(TextSpan(text: "\n", style: kNormalTextStyle));
       }
     }
 

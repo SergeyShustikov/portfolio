@@ -14,7 +14,7 @@ class MobileDrawer extends StatelessWidget {
         children: [
           ContentContainer(
             height: kToolbarHeight + 14,
-            child: Center(child: Text('Go to :', style: GoogleFonts.ubuntu(fontSize: 18, fontWeight: FontWeight.bold))),
+            child: Center(child: Text('Go to :', style: kHeaderTextStyleBold)),
           ),
           Container(
             height: 1,

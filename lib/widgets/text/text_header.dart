@@ -17,9 +17,5 @@ class TextHeader extends StatelessWidget {
     );
   }
 
-  TextStyle get _headerStyle => TextStyle(
-        fontSize: 14,
-        fontFamily: GoogleFonts.ubuntu().fontFamily,
-        color: const Color(0xffE8EAED),
-      );
+  TextStyle get _headerStyle => kNormalTextStyle.copyWith(color: const Color(0xffE8EAED));
 }

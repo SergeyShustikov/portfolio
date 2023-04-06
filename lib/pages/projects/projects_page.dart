@@ -6,6 +6,7 @@ import 'package:portfolio/pages/projects/data/project.dart';
 import 'package:portfolio/pages/projects/projects_page_desktop.dart';
 import 'package:portfolio/pages/projects/projects_page_mobile.dart';
 import 'package:portfolio/pages/projects/projects_page_tablet.dart';
+import 'package:portfolio/utils/text_styles.dart';
 import 'package:portfolio/utils/ui_utils.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:portfolio/widgets/ui_library.dart';
@@ -92,7 +93,7 @@ class ProjectsGridView extends StatelessWidget {
         final project = projects[index];
         return Card(
           child: Container(
-            padding: const EdgeInsets.all(16),
+            padding: kDefaultPadding,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -116,30 +117,27 @@ class ProjectsGridView extends StatelessWidget {
                         ))
                       : Container(
                           decoration: BoxDecoration(border: Border.all(color: Colors.white70)),
-                          child: const Center(
+                          child: Center(
                             child: Text(
                               'No Image',
-                              style: TextStyle(fontSize: 20),
+                              style: kHeaderTextStyleBigBold,
                             ),
                           ),
                         ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: kDefaultPadding / 2,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         project.name,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
+                        style: kHeaderTextStyleBigBold,
                       ),
                       const SizedBox(height: 8),
                       Text(
                         project.description,
-                        style: const TextStyle(fontSize: 16),
+                        style: kNormalTextStyle,
                       ),
                       const SizedBox(height: 8),
                       if (project.googlePlayLink != null || project.appStoreLink != null)

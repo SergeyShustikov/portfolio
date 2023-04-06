@@ -1,12 +1,13 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/data/technologies.dart';
 import 'package:portfolio/pages/about/about_page_desktop.dart';
 import 'package:portfolio/pages/about/about_page_mobile.dart';
 import 'package:portfolio/pages/about/about_page_tablet.dart';
 import 'package:portfolio/theming/palette.dart';
+import 'package:portfolio/utils/text_styles.dart';
 import 'package:portfolio/utils/ui_utils.dart';
+import 'package:portfolio/utils/utils.dart';
 import 'package:portfolio/widgets/ui_library.dart';
 import 'package:web_scaffold/web_scaffold.dart';
 
@@ -23,9 +24,7 @@ class AboutPage extends StatelessWidget with LayoutTypeDeterminatorMixin {
         bodyConfiguration: getBodyConfiguration(context),
         drawer: context.isMobile() ? const MobileDrawer() : null,
         header: const SiteAppBar(),
-        headerSettings: HeaderSettings(
-          headerHeight: kToolbarHeight + 18,
-        ),
+        headerSettings: HeaderSettings(headerHeight: kHeaderHeight),
         body: const ResponsiveWidget(
           desktopView: AboutPageDesktop(),
           tabletView: AboutPageTablet(),
@@ -56,18 +55,13 @@ class EmploymentHistoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: kDefaultPaddingVertical / 2,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             companyName,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-              color: Colors.blue,
-              fontFamily: GoogleFonts.ubuntu().fontFamily,
-            ),
+            style: kHeaderTextStyleBigBold.copyWith(color: Colors.blue),
           ),
           const SizedBox(height: 4),
           Row(
@@ -76,11 +70,7 @@ class EmploymentHistoryItem extends StatelessWidget {
               Flexible(
                 child: Text(
                   position,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    fontFamily: GoogleFonts.ubuntu().fontFamily,
-                  ),
+                  style: kNormalTextStyleBigBold,
                 ),
               ),
               Row(
@@ -93,10 +83,7 @@ class EmploymentHistoryItem extends StatelessWidget {
                   const SizedBox(width: 4),
                   Text(
                     date,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontFamily: GoogleFonts.ubuntu().fontFamily,
-                    ),
+                    style: kSmallTextStyle,
                   ),
                 ],
               ),
@@ -115,10 +102,7 @@ class EmploymentHistoryItem extends StatelessWidget {
               Flexible(
                 child: Text(
                   description,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: GoogleFonts.ubuntu().fontFamily,
-                  ),
+                  style: kNormalTextStyle,
                 ),
               ),
             ],
@@ -172,10 +156,7 @@ class _DecoratedChip extends StatelessWidget {
     return Chip(
       label: Text(
         text,
-        style: TextStyle(
-          fontSize: 14,
-          fontFamily: GoogleFonts.ubuntu().fontFamily,
-        ),
+        style: kNormalTextStyle,
       ),
     );
   }
@@ -195,13 +176,10 @@ class _NoDecorationChip extends StatelessWidget {
       surfaceTintColor: Colors.transparent,
       shadowColor: Colors.transparent,
       side: BorderSide.none,
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: kDefaultPaddingVertical / 2,
       label: Text(
         text,
-        style: TextStyle(
-          fontSize: 14,
-          fontFamily: GoogleFonts.ubuntu().fontFamily,
-        ),
+        style: kNormalTextStyle,
       ),
     );
   }
@@ -218,10 +196,7 @@ class IconTechnologyChip extends StatelessWidget {
       avatar: technology.icon?.image(width: iconSize, height: iconSize),
       label: Text(
         technology.title,
-        style: TextStyle(
-          fontSize: 14,
-          fontFamily: GoogleFonts.ubuntu().fontFamily,
-        ),
+        style: kNormalTextStyle,
       ),
     );
   }

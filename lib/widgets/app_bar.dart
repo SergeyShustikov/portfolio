@@ -16,28 +16,20 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
       mainAxisSize: MainAxisSize.min,
       children: [
         ContentContainer(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 22),
+          padding: kDefaultPadding * 1.5,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  HoveringWidget(
-                    child: GestureDetector(
-                      child: Text(
-                        'Sergey Shustikov',
-                        style: TextStyle(
-                          fontFamily: GoogleFonts.ubuntu().fontFamily,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      onTap: () {
-                        context.go('/');
-                      },
-                    ),
+                  HoveringText(
+                    'Sergey Shustikov',
+                    style: kWebsiteTitleStyle,
+                    underline: false,
+                    onTap: () {
+                      context.go('/');
+                    },
                   ),
                   const Spacer(),
                   Visibility(
@@ -80,20 +72,12 @@ class SiteAppBar extends StatelessWidget with LayoutTypeDeterminatorMixin {
     return Column(
       children: [
         ContentContainer(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 22),
+          padding: kDefaultPadding * 1.5,
           child: Align(
             alignment: Alignment.centerRight,
             child: HoveringWidget(
               child: GestureDetector(
-                child: Text(
-                  'Sergey Shustikov',
-                  style: TextStyle(
-                    fontFamily: GoogleFonts.ubuntu().fontFamily,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
+                child: Text('Sergey Shustikov', style: kHeaderTextStyleBold),
                 onTap: () {
                   context.go('/');
                 },

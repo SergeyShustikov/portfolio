@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/utils/text_styles.dart';
 
 class PageNotFound extends StatelessWidget {
   const PageNotFound({super.key});
@@ -10,7 +10,7 @@ class PageNotFound extends StatelessWidget {
       body: Center(
         child: Text(
           'Page Not Found',
-          style: GoogleFonts.ubuntu(fontSize: 48),
+          style: kPageNotFoundTitleStyle,
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/about/about_page.dart';
 import 'package:portfolio/theming/palette.dart';
+import 'package:portfolio/utils/utils.dart';
 import 'package:portfolio/widgets/ui_library.dart';
 
 class AboutPageDesktop extends StatelessWidget {
@@ -18,7 +19,7 @@ class AboutPageDesktop extends StatelessWidget {
         ),
         color: Palette.containerColor,
       ),
-      padding: const EdgeInsets.all(16),
+      padding: kDefaultPadding,
       child: Column(
         children: const [
           Text('About me'),

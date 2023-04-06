@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/pages/about/about_page.dart';
 import 'package:portfolio/pages/home/home_page.dart';
 import 'package:portfolio/pages/not_found/page_not_found.dart';
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       theme: ThemeData(
         useMaterial3: true,
-        fontFamily: GoogleFonts.rubik().fontFamily,
+        // fontFamily: GoogleFonts.rubik().fontFamily,
         colorScheme: ColorScheme.dark(
           background: Palette.backgroundColor,
           primary: Palette.primaryColor,
