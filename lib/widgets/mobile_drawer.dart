@@ -7,13 +7,10 @@ class MobileDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: Palette.backgroundColor,
-      shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(28.0),
-      ),
       child: Column(
         children: [
           ContentContainer(
-            height: kToolbarHeight + 14,
+            height: kHeaderHeight - 4,
             child: Center(child: Text('Go to :', style: kHeaderTextStyleBold)),
           ),
           Container(
