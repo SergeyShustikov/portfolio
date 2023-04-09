@@ -44,7 +44,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       theme: ThemeData(
         useMaterial3: true,
-        // fontFamily: GoogleFonts.rubik().fontFamily,
         colorScheme: ColorScheme.dark(
           background: Palette.backgroundColor,
           primary: Palette.primaryColor,

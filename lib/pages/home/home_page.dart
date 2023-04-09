@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/home/home_page_desktop.dart';
-import 'package:portfolio/pages/home/home_page_mobile.dart';
-import 'package:portfolio/pages/home/home_page_tablet.dart';
 import 'package:portfolio/utils/ui_utils.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:portfolio/widgets/ui_library.dart';
@@ -26,8 +24,6 @@ class HomePage extends StatelessWidget {
         expandBody: true,
         body: const ResponsiveWidget(
           desktopView: HomePageDesktop(),
-          tabletView: HomePageTablet(),
-          mobileView: HomePageMobile(),
         ),
       ),
     );

@@ -4,7 +4,7 @@ import 'package:portfolio/gen/assets.gen.dart';
 import 'package:portfolio/theming/palette.dart';
 import 'package:portfolio/utils/text_styles.dart';
 import 'package:portfolio/utils/utils.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:portfolio/widgets/buttons/social_network.dart';
 
 class HomePageMobile extends StatelessWidget {
   const HomePageMobile({super.key});
@@ -55,135 +55,11 @@ class HomePageMobile extends StatelessWidget {
               ),
               SocialNetwork(
                 icon: Assets.technologyIcons.icGmail,
-                onTap: () => _sendEmail(),
+                onTap: () => sendEmail(),
               ),
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  void _sendEmail() {
-    final Uri emailLaunchUri = Uri(
-      scheme: 'mailto',
-      path: 'pandarium.shustikov@gmail.com',
-      queryParameters: {'subject': 'CallOut user Profile', 'body': ''},
-    );
-    launchUrl(emailLaunchUri, mode: LaunchMode.externalApplication);
-  }
-
-  void openLink(BuildContext context, String url) async {
-    final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      launchUrl(uri);
-    } else {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Could not launch url'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
-}
-
-// 1 - lowest
-// 5 - highest
-class ResponseLevelWidget extends StatelessWidget {
-  final int level;
-  const ResponseLevelWidget._(this.level);
-
-  factory ResponseLevelWidget.lowest() => const ResponseLevelWidget._(1);
-  factory ResponseLevelWidget.low() => const ResponseLevelWidget._(2);
-  factory ResponseLevelWidget.medium() => const ResponseLevelWidget._(3);
-  factory ResponseLevelWidget.high() => const ResponseLevelWidget._(4);
-  factory ResponseLevelWidget.highest() => const ResponseLevelWidget._(5);
-
-  final Color _colorLowest = Colors.red;
-  Color? get _colorLow => Color.lerp(_colorLowest, _colorMedium, 0.5);
-  final Color _colorMedium = Colors.yellow;
-  Color? get _colorHigh => Color.lerp(_colorMedium, _colorHighest, 0.5);
-  final Color _colorHighest = Colors.green;
-
-  Color? getColorByLevel() {
-    switch (level) {
-      case 1:
-        return _colorLowest;
-      case 2:
-        return _colorLow;
-      case 3:
-        return _colorMedium;
-      case 4:
-        return _colorHigh;
-      case 5:
-        return _colorHighest;
-      default:
-        return _colorHighest;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: _buildSegments(),
-    );
-  }
-
-  List<Widget> _buildSegments() {
-    List<Widget> segments = [];
-    for (int i = 0; i < 5; i++) {
-      if (i < level) {
-        segments.add(_buildSegment(getColorByLevel()));
-      } else {
-        segments.add(_buildSegment(Colors.transparent));
-      }
-    }
-    return segments;
-  }
-
-  Widget _buildSegment(Color? color) {
-    return Expanded(
-      child: Container(
-        height: 8,
-        margin: kDefaultPadding / 4,
-        decoration: BoxDecoration(
-          color: color,
-          border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-    );
-  }
-}
-
-class SocialNetwork extends StatelessWidget {
-  final AssetGenImage? icon;
-  final double _iconSize = 24;
-  final VoidCallback onTap;
-  const SocialNetwork({
-    super.key,
-    required this.icon,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(8),
-        child: Container(
-          padding: kDefaultPadding / 2,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.white),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: icon?.image(width: _iconSize, height: _iconSize) ?? const SizedBox.shrink(),
-        ),
       ),
     );
   }

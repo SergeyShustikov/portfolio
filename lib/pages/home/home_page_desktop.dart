@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_emoji/flutter_emoji.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/data/technologies.dart';
+import 'package:portfolio/gen/assets.gen.dart';
 import 'package:portfolio/theming/palette.dart';
+import 'package:portfolio/utils/text_styles.dart';
 import 'package:portfolio/utils/utils.dart';
+import 'package:portfolio/widgets/buttons/social_network.dart';
 
-///
-/// Emojify the input text.
-///
-/// For example: 'I :heart: :coffee:' => 'I ❤️ ☕'
-///
 class HomePageDesktop extends StatelessWidget {
   const HomePageDesktop({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var parser = EmojiParser();
     return Container(
       padding: kDefaultPadding,
       decoration: BoxDecoration(
@@ -24,23 +20,42 @@ class HomePageDesktop extends StatelessWidget {
           bottomRight: Radius.circular(12),
         ),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          Center(
+            child: Text(
+              'Hi, my name is Sergey.',
+              style: kNormalTextStyleBig,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'I\'m Senior Flutter Developer and this is my website which has been built on Flutter. Here you can find examples of my work and info about me.\n',
+            style: kNormalTextStyleBig,
+            textAlign: TextAlign.justify,
+          ),
+          const Spacer(),
+          Row(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                'Hi!',
-                style: GoogleFonts.ubuntu(fontSize: 36),
+              SocialNetwork(
+                icon: Technology.github.icon,
+                onTap: () => openLink(context, 'https://github.com/SergeyShustikov'),
               ),
-              Text(
-                'I\'m Sergey, Senior Flutter Developer. ${parser.emojify('I :heart: :coffee:')}I ❤️ ☕ 😆',
-                // style: GoogleFonts.notoEmoji(fontSize: 18),
+              SocialNetwork(
+                icon: Assets.technologyIcons.icLinkedin,
+                onTap: () => openLink(context, 'https://www.linkedin.com/in/sergey-shustikov/'),
               ),
-              Text(
-                'On this website you can find information about me, projects and other stuff. Hi there 👋',
-                style: GoogleFonts.ubuntu(fontSize: 18),
+              SocialNetwork(
+                icon: Assets.technologyIcons.icTelegram,
+                onTap: () => openLink(context, 'https://t.me/deathember_ua'),
+              ),
+              SocialNetwork(
+                icon: Assets.technologyIcons.icGmail,
+                onTap: () => sendEmail(),
               ),
             ],
           ),
