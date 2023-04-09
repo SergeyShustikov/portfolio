@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/gen/assets.gen.dart';
 import 'package:portfolio/pages/about/about_page.dart';
 import 'package:portfolio/pages/home/home_page.dart';
 import 'package:portfolio/pages/not_found/page_not_found.dart';
@@ -14,10 +15,29 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Future<void> _precacheImages() async {
+    for (final AssetGenImage image in Assets.technologyIcons.values) {
+      await precacheImage(
+        image.provider(),
+        context,
+      );
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    _precacheImages();
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     // GoRouter configuration

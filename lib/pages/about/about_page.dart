@@ -4,7 +4,6 @@ import 'package:portfolio/data/technologies.dart';
 import 'package:portfolio/pages/about/about_page_desktop.dart';
 import 'package:portfolio/pages/about/about_page_mobile.dart';
 import 'package:portfolio/pages/about/about_page_tablet.dart';
-import 'package:portfolio/theming/palette.dart';
 import 'package:portfolio/utils/text_styles.dart';
 import 'package:portfolio/utils/ui_utils.dart';
 import 'package:portfolio/utils/utils.dart';
@@ -153,9 +152,16 @@ class _DecoratedChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      label: Text(
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.white),
+        borderRadius: BorderRadius.circular(8),
+        color: const Color(0xff14151D),
+      ),
+      padding: kDefaultPadding / 2,
+      child: Text(
         text,
+        softWrap: true,
         style: kNormalTextStyle,
       ),
     );
@@ -171,13 +177,9 @@ class _NoDecorationChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      backgroundColor: Palette.containerColor,
-      surfaceTintColor: Colors.transparent,
-      shadowColor: Colors.transparent,
-      side: BorderSide.none,
+    return Container(
       padding: kDefaultPaddingVertical / 2,
-      label: Text(
+      child: Text(
         text,
         style: kNormalTextStyle,
       ),
@@ -192,11 +194,23 @@ class IconTechnologyChip extends StatelessWidget {
   final double iconSize = 18;
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      avatar: technology.icon?.image(width: iconSize, height: iconSize),
-      label: Text(
-        technology.title,
-        style: kNormalTextStyle,
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.white),
+        borderRadius: BorderRadius.circular(8),
+        color: const Color(0xff14151D),
+      ),
+      padding: kDefaultPadding / 2,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          technology.icon?.image(width: iconSize, height: iconSize) ?? const SizedBox.shrink(),
+          const SizedBox(width: 4),
+          Text(
+            technology.title,
+            style: kNormalTextStyle,
+          ),
+        ],
       ),
     );
   }

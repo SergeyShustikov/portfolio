@@ -106,8 +106,8 @@ class AboutPageMobile extends StatelessWidget {
               'Networking',
               'Git, Atlassian tools',
               'Scrum / Agile',
-              'Working with smartphone camera & images / recognition technologies',
-              'Working with crypto alghorythms (RSA, SHA)',
+              'Face recognition',
+              'Crypto alghorythms (RSA, SHA)',
             ],
           ),
           EmploymentHistoryItem(
