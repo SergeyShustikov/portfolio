@@ -37,7 +37,7 @@ class AboutPage extends StatelessWidget with LayoutTypeDeterminatorMixin {
 
 class EmploymentHistoryItem extends StatelessWidget {
   final String companyName;
-  final String position;
+  final List<String> positions;
   final String date;
   final String description;
   final List<String> tools;
@@ -45,7 +45,7 @@ class EmploymentHistoryItem extends StatelessWidget {
   const EmploymentHistoryItem({
     super.key,
     required this.companyName,
-    required this.position,
+    required this.positions,
     required this.date,
     required this.description,
     required this.tools,
@@ -66,11 +66,28 @@ class EmploymentHistoryItem extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Flexible(
-                child: Text(
-                  position,
-                  style: kNormalTextStyleBigBold,
-                ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: positions.reversed.map((position) {
+                  return Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      if (positions.length > 1)
+                        Icon(
+                          EvaIcons.arrowheadUpOutline,
+                          color:
+                              (position != positions.last && positions.length > 1) ? Colors.green : Colors.transparent,
+                        ),
+                      Text(
+                        position,
+                        style: kNormalTextStyleBigBold,
+                      ),
+                    ],
+                  );
+                }).toList(),
               ),
               Row(
                 mainAxisSize: MainAxisSize.min,
