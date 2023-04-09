@@ -23,6 +23,7 @@ dependencies:
   #   path: ./web_scaffold
   image_network: ^2.5.1
   flutter_emoji: ^2.4.0
+  mailto: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

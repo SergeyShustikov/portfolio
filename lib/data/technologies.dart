@@ -51,7 +51,7 @@ extension TecnologyExtension on Technology {
       case Technology.kotlin:
         return Assets.technologyIcons.icKotlin;
       case Technology.github:
-        return Assets.technologyIcons.icKotlin;
+        return Assets.technologyIcons.icGithub;
     }
   }
 }

@@ -82,6 +82,10 @@ class $AssetsTechnologyIconsGen {
   AssetGenImage get icGithub =>
       const AssetGenImage('assets/technology_icons/ic_github.png');
 
+  /// File path: assets/technology_icons/ic_gmail.png
+  AssetGenImage get icGmail =>
+      const AssetGenImage('assets/technology_icons/ic_gmail.png');
+
   /// File path: assets/technology_icons/ic_java.png
   AssetGenImage get icJava =>
       const AssetGenImage('assets/technology_icons/ic_java.png');
@@ -90,9 +94,21 @@ class $AssetsTechnologyIconsGen {
   AssetGenImage get icKotlin =>
       const AssetGenImage('assets/technology_icons/ic_kotlin.png');
 
+  /// File path: assets/technology_icons/ic_linkedin.png
+  AssetGenImage get icLinkedin =>
+      const AssetGenImage('assets/technology_icons/ic_linkedin.png');
+
   /// File path: assets/technology_icons/ic_sentry.png
   AssetGenImage get icSentry =>
       const AssetGenImage('assets/technology_icons/ic_sentry.png');
+
+  /// File path: assets/technology_icons/ic_telegram.png
+  AssetGenImage get icTelegram =>
+      const AssetGenImage('assets/technology_icons/ic_telegram.png');
+
+  /// File path: assets/technology_icons/ic_viber.png
+  AssetGenImage get icViber =>
+      const AssetGenImage('assets/technology_icons/ic_viber.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -103,9 +119,13 @@ class $AssetsTechnologyIconsGen {
         icFlutterGen,
         icGetx,
         icGithub,
+        icGmail,
         icJava,
         icKotlin,
-        icSentry
+        icLinkedin,
+        icSentry,
+        icTelegram,
+        icViber
       ];
 }
 
